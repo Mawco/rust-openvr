@@ -1,7 +1,7 @@
 #![allow(non_upper_case_globals)]
 
 use super::TrackedDeviceProperty;
-use openvr_sys as sys;
+use openvr_sys_bindings as sys;
 
 pub const Invalid: TrackedDeviceProperty = sys::ETrackedDeviceProperty_Prop_Invalid;
 pub const TrackingSystemName_String: TrackedDeviceProperty =

@@ -1,7 +1,7 @@
 use std::ffi::{CStr, CString};
 use std::{fmt, mem, ptr, slice};
 
-use openvr_sys as sys;
+use openvr_sys_bindings as sys;
 
 use {get_string, ControllerState, RenderModels};
 
@@ -333,7 +333,7 @@ pub mod component_properties {
 
 pub mod component {
     pub mod controller {
-        use openvr_sys as sys;
+        use openvr_sys_bindings as sys;
         use std::ffi::CStr;
 
         // TODO: Real constants

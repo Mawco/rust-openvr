@@ -1,6 +1,6 @@
 use std::convert::From;
 
-use openvr_sys as sys;
+use openvr_sys_bindings as sys;
 
 use Chaperone;
 

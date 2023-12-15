@@ -1,4 +1,4 @@
-use openvr_sys as sys;
+use openvr_sys_bindings as sys;
 
 #[derive(Debug, Copy, Clone, Eq, PartialEq)]
 pub enum TrackingUniverseOrigin {

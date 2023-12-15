@@ -1,4 +1,4 @@
-extern crate openvr_sys;
+extern crate openvr_sys_bindings;
 #[macro_use]
 extern crate lazy_static;
 
@@ -7,7 +7,7 @@ use std::ffi::{CStr, CString};
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::{error, fmt, mem, ptr};
 
-use openvr_sys as sys;
+use openvr_sys_bindings as sys;
 
 mod tracking;
 
@@ -16,6 +16,7 @@ pub mod compositor;
 pub mod property;
 pub mod render_models;
 pub mod system;
+pub mod settings;
 
 pub use tracking::*;
 
@@ -60,6 +61,8 @@ pub struct Compositor(&'static sys::VR_IVRCompositor_FnTable);
 pub struct RenderModels(&'static sys::VR_IVRRenderModels_FnTable);
 pub struct Chaperone(&'static sys::VR_IVRChaperone_FnTable);
 
+pub struct Settings(&'static sys::VR_IVRSettings_FnTable);
+
 /// Entry points into OpenVR.
 ///
 /// At most one of this object may exist at a time.
@@ -92,6 +95,9 @@ impl Context {
     }
     pub fn chaperone(&self) -> Result<Chaperone, InitError> {
         load(sys::IVRChaperone_Version).map(|x| unsafe { Chaperone(&*x) })
+    }
+    pub fn settings(&self) -> Result<Settings, InitError> {
+        load(sys::IVRSettings_Version).map(|x| unsafe { Settings(&*x) })
     }
 }
 

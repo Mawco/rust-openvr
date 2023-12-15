@@ -11,7 +11,7 @@
 use std::ffi::CString;
 use std::{error, fmt, mem, ptr};
 
-use openvr_sys as sys;
+use openvr_sys_bindings as sys;
 
 pub mod texture;
 
